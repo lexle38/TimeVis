@@ -1,0 +1,69 @@
+# Core ML/DL dependencies
+torch>=2.0.0
+transformers>=4.30.0
+datasets>=2.10.0
+peft>=0.5.0
+# flash-attn>=2.0.0  # Comment out for CPU-only deployments
+
+# Backend framework
+fastapi>=0.104.0
+uvicorn>=0.24.0
+gunicorn>=21.2.0
+python-multipart>=0.0.6
+
+# Alternative: Flask backend (if needed)
+Flask>=2.3.0
+Flask-CORS>=4.0.0
+Flask-SQLAlchemy>=3.0.0
+Flask-Migrate>=4.0.0
+
+# Data processing and analysis
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+openpyxl>=3.1.0
+
+# Time series specific
+tslearn>=0.6.0
+statsmodels>=0.14.0
+prophet>=1.1.0
+
+# Database
+SQLAlchemy>=2.0.0
+pymysql>=1.1.0
+psycopg2-binary>=2.9.0
+
+# Task queue (optional)
+celery>=5.3.0
+redis>=4.5.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+tqdm>=4.65.0
+loguru>=0.7.0
+pyyaml>=6.0.0
+click>=8.1.0
+
+# Jupyter support (optional)
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+ipywidgets>=8.1.0
+
+# Development and testing
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+isort>=5.12.0
+
+# Cloud deployment specific
+gunicorn>=21.2.0
+supervisor>=4.2.0
+nginx  # Note: Install via system package manager
+
+# Monitoring and logging
+psutil>=5.9.0
+python-json-logger>=2.0.0

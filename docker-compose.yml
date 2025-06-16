@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  timevis-app:
+    build: .
+    container_name: timevis_container
+    ports:
+      - "8000:8000"
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./results:/app/results
+      - ./logs:/app/logs
+    environment:
+      - PYTHONPATH=/app
+      - CUDA_VISIBLE_DEVICES=0
+    restart: unless-stopped
+    command: >
+      bash -c "
+        python data_processing.py &&
+        python model_training.py --model lstm --epochs 50 &&
+        python model_training.py --model transformer --epochs 30 &&
+        python -m backend.main
+      "
+
+  jupyter:
+    build: .
+    container_name: timevis_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONPATH=/app
+    command: >
+      bash -c "
+        jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --token=timevis2024
+      "
+    profiles:
+      - jupyter
+
+networks:
+  default:
+    driver: bridge
