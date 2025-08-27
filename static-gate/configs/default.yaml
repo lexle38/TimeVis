@@ -1,0 +1,58 @@
+# Static Gate Configuration
+# This file configures the static analysis rules and behavior
+
+# Rules configuration
+rules:
+  # Security Rules
+  - id: security.dangerous-exec
+    enabled: true
+    severity: error
+    
+  - id: security.dangerous-os
+    enabled: true
+    severity: error
+    
+  - id: security.hardcoded-secrets
+    enabled: true
+    severity: warning
+    
+  # Naming Convention Rules
+  - id: naming.camelcase
+    enabled: true
+    severity: warning
+    
+  # Import Restriction Rules
+  - id: imports.restricted
+    enabled: true
+    severity: warning
+    
+  # Code Quality Rules
+  - id: quality.complexity
+    enabled: true
+    severity: info
+    params:
+      max_complexity: "10"
+
+# Files and directories to ignore
+ignore_files:
+  - "*.pb.go"          # Protocol buffer generated files
+  - "*_test.go"        # Test files (optional)
+  - "mock_*.go"        # Mock files
+
+ignore_dirs:
+  - "vendor"           # Vendor dependencies
+  - ".git"             # Git directory
+  - "node_modules"     # Node.js modules
+  - "dist"             # Distribution files
+  - "build"            # Build artifacts
+
+# Output configuration
+output_format: json      # json, xml, html, text
+output_file: ""          # Empty means stdout
+
+# Performance configuration
+concurrent: true         # Enable concurrent processing
+max_goroutines: 4        # Maximum number of concurrent goroutines
+
+# CI/CD integration
+exit_on_findings: true   # Exit with code 1 if any error-level findings are found

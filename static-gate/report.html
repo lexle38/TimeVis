@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Static Analysis Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f5f5f5; padding: 20px; border-radius: 5px; }
+        .summary { background-color: #e8f4fd; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .file-section { margin: 20px 0; border: 1px solid #ddd; border-radius: 5px; }
+        .file-header { background-color: #f8f9fa; padding: 10px; font-weight: bold; }
+        .finding { padding: 10px; border-bottom: 1px solid #eee; }
+        .finding:last-child { border-bottom: none; }
+        .severity-error { border-left: 4px solid #dc3545; }
+        .severity-warning { border-left: 4px solid #ffc107; }
+        .severity-info { border-left: 4px solid #17a2b8; }
+        .location { color: #666; font-size: 0.9em; }
+        .rule-id { background-color: #e9ecef; padding: 2px 6px; border-radius: 3px; font-size: 0.8em; }
+        .description { color: #666; font-style: italic; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Static Analysis Report</h1>
+        <p>Generated: 2025-08-27 07:13:42</p>
+    </div>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <p>Errors: 3 | Warnings: 5 | Info: 0 | Total: 8</p>
+    </div>
+
+    
+        
+        <div class="file-section">
+            <div class="file-header">examples/bad_code.go</div>
+            
+            <div class="finding severity-error">
+                <div>
+                    <strong>Dangerous exec.Command call detected</strong>
+                    <span class="rule-id">security.dangerous-exec</span>
+                </div>
+                <div class="location">Line 21, Column 9</div>
+                
+                <div class="description">exec.Command calls can be dangerous if user input is not properly sanitized</div>
+                
+            </div>
+            
+            <div class="finding severity-error">
+                <div>
+                    <strong>Dangerous OS operation: os.Remove</strong>
+                    <span class="rule-id">security.dangerous-os</span>
+                </div>
+                <div class="location">Line 28, Column 2</div>
+                
+                <div class="description">OS operations like os.Remove can be dangerous if not properly controlled</div>
+                
+            </div>
+            
+            <div class="finding severity-error">
+                <div>
+                    <strong>Dangerous OS operation: os.RemoveAll</strong>
+                    <span class="rule-id">security.dangerous-os</span>
+                </div>
+                <div class="location">Line 29, Column 2</div>
+                
+                <div class="description">OS operations like os.RemoveAll can be dangerous if not properly controlled</div>
+                
+            </div>
+            
+            <div class="finding severity-warning">
+                <div>
+                    <strong>Potential hardcoded secret in variable: APIKey</strong>
+                    <span class="rule-id">security.hardcoded-secrets</span>
+                </div>
+                <div class="location">Line 13, Column 2</div>
+                
+                <div class="description">Hardcoded secrets should be replaced with environment variables or secure configuration</div>
+                
+            </div>
+            
+            <div class="finding severity-warning">
+                <div>
+                    <strong>Potential hardcoded secret in variable: password</strong>
+                    <span class="rule-id">security.hardcoded-secrets</span>
+                </div>
+                <div class="location">Line 14, Column 2</div>
+                
+                <div class="description">Hardcoded secrets should be replaced with environment variables or secure configuration</div>
+                
+            </div>
+            
+            <div class="finding severity-warning">
+                <div>
+                    <strong>Potential hardcoded secret in variable: dbToken</strong>
+                    <span class="rule-id">security.hardcoded-secrets</span>
+                </div>
+                <div class="location">Line 15, Column 2</div>
+                
+                <div class="description">Hardcoded secrets should be replaced with environment variables or secure configuration</div>
+                
+            </div>
+            
+            <div class="finding severity-warning">
+                <div>
+                    <strong>Unexported function should use camelCase: bad_function_name</strong>
+                    <span class="rule-id">naming.camelcase</span>
+                </div>
+                <div class="location">Line 19, Column 1</div>
+                
+                <div class="description">Unexported functions should follow camelCase naming convention</div>
+                
+            </div>
+            
+            <div class="finding severity-warning">
+                <div>
+                    <strong>Restricted import detected: unsafe</strong>
+                    <span class="rule-id">imports.restricted</span>
+                </div>
+                <div class="location">Line 6, Column 2</div>
+                
+                <div class="description">Import of unsafe is restricted due to potential security or safety concerns</div>
+                
+            </div>
+            
+        </div>
+        
+    
+</body>
+</html>

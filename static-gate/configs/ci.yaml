@@ -1,0 +1,43 @@
+# Example configuration for CI/CD pipeline
+
+rules:
+  # Enable only critical security rules for CI
+  - id: security.dangerous-exec
+    enabled: true
+    severity: error
+    
+  - id: security.dangerous-os
+    enabled: true
+    severity: error
+    
+  - id: security.hardcoded-secrets
+    enabled: true
+    severity: error  # Stricter in CI
+    
+  # Disable style rules in CI to reduce noise
+  - id: naming.camelcase
+    enabled: false
+    
+  - id: imports.restricted
+    enabled: true
+    severity: warning
+    
+  - id: quality.complexity
+    enabled: false  # Disable for faster CI
+
+ignore_files:
+  - "*.pb.go"
+  - "*_test.go"
+  - "mock_*.go"
+  - "vendor/*"
+
+ignore_dirs:
+  - "vendor"
+  - ".git"
+  - "testdata"
+
+# CI optimized settings
+output_format: json
+concurrent: true
+max_goroutines: 8        # More parallel processing in CI
+exit_on_findings: true   # Fail CI on any findings
